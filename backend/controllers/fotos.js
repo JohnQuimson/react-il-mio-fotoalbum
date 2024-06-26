@@ -40,7 +40,7 @@ const index = async (req, res) => {
 
     res.status(200).json(fotos);
   } catch (err) {
-    res.status(500).json({ error: 'Errore nel recupero delle Foto' });
+    errorHandler(err, req, res);
   }
 };
 
@@ -64,12 +64,65 @@ const show = async (req, res) => {
 
     res.status(200).json(foto);
   } catch (err) {
-    res.status(500).json({ error: 'Errore nel recupero della Foto' });
+    errorHandler(err, req, res);
   }
 };
 
-const update = async (req, res) => {};
-const destroy = async (req, res) => {};
+const update = async (req, res) => {
+  const { id } = req.params;
+  const { title, description, img, visible, categories } = req.body;
+
+  try {
+    const currentFoto = await prisma.foto.findUnique({
+      where: {
+        id: parseInt(id),
+      },
+    });
+
+    // controllo esistenza foto
+    if (!currentFoto) {
+      return res.status(404).json({ error: 'Nessuna foto trovata' });
+    }
+
+    // sostituzione dati con quelli nuovi
+    const updatedData = {
+      title: title || currentFoto.title,
+      description: description || currentFoto.description,
+      img: img || currentFoto.img,
+      visible: visible !== undefined ? visible : currentFoto.visible,
+      categories: {
+        set: categories.map((categoryId) => ({ id: parseInt(categoryId) })),
+      },
+    };
+
+    // update nel db
+    const updatedFoto = await prisma.foto.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: updatedData,
+    });
+
+    res.status(200).json(updatedFoto);
+  } catch (err) {
+    errorHandler(err, req, res);
+  }
+};
+
+const destroy = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await prisma.foto.delete({
+      where: {
+        id: parseInt(id),
+      },
+    });
+    res.status(200).json(`Foto con id ${id} Cancellato con successo`);
+  } catch (err) {
+    errorHandler(err, req, res);
+  }
+};
 
 module.exports = {
   store,
