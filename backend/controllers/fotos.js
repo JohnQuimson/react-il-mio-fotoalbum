@@ -14,7 +14,7 @@ const store = async (req, res) => {
     img,
     visible: req.body.available ? true : false,
     categories: {
-      connect: categories,
+      connect: categories.map((id) => ({ id: parseInt(id) })),
     },
   };
 
@@ -30,7 +30,20 @@ const store = async (req, res) => {
   }
 };
 
-const index = async (req, res) => {};
+const index = async (req, res) => {
+  try {
+    const fotos = await prisma.foto.findMany({
+      include: {
+        categories: true,
+      },
+    });
+
+    res.status(200).json(fotos);
+  } catch (err) {
+    res.status(500).json({ error: 'Errore nel recuper delle Foto' });
+  }
+};
+
 const show = async (req, res) => {};
 const update = async (req, res) => {};
 const destroy = async (req, res) => {};
