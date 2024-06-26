@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const upload = require('../middlewares/upload.js');
+const { bodyData } = require('../validations/fotos.js');
+const validator = require('../middlewares/validator.js');
 
 const {
   store,
@@ -12,8 +14,8 @@ const {
 
 router.get('/', index);
 router.get('/:id', show);
-router.post('/', upload.single('img'), store);
-router.put('/:id', upload.single('img'), update);
+router.post('/', upload.single('img'), validator(bodyData), store);
+router.put('/:id', upload.single('img'), validator(bodyData), update);
 router.delete('/:id', destroy);
 
 module.exports = router;

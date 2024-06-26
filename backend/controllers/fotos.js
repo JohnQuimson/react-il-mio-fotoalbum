@@ -122,12 +122,28 @@ const destroy = async (req, res) => {
   const { id } = req.params;
 
   try {
+    const foto = await prisma.foto.findUnique({
+      where: {
+        id: parseInt(id),
+      },
+    });
+
+    if (!foto) {
+      return res.status(404).json({ error: 'Nessuna foto trovata' });
+    }
+
     await prisma.foto.delete({
       where: {
         id: parseInt(id),
       },
     });
-    res.status(200).json(`Foto con id ${id} Cancellato con successo`);
+
+    if (foto.img) {
+      const imgPath = foto.img.split('/').pop();
+      deletePic('foto_pics', imgPath);
+    }
+
+    res.status(200).json(`Foto con id ${id} cancellata con successo`);
   } catch (err) {
     errorHandler(err, req, res);
   }
