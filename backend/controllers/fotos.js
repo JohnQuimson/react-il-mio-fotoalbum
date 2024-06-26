@@ -4,19 +4,24 @@ require('dotenv').config();
 const { PORT, HOST } = process.env;
 const port = PORT || 3000;
 const errorHandler = require('../middlewares/errorHandler.js');
+const deletePic = require('../utils/deletePic.js');
 
 const store = async (req, res) => {
-  const { title, description, img, visible, categories } = req.body;
+  const { title, description, visible, categories } = req.body;
 
   const data = {
     title,
     description,
-    img,
+
     visible: req.body.available ? true : false,
     categories: {
       connect: categories.map((id) => ({ id: parseInt(id) })),
     },
   };
+
+  if (req.file) {
+    data.img = `${HOST}:${port}/foto_pics/${req.file.filename}`;
+  }
 
   try {
     const foto = await prisma.foto.create({
@@ -25,6 +30,7 @@ const store = async (req, res) => {
     res.status(200).send(foto);
   } catch (err) {
     if (req.file) {
+      deletePic('foto_pics', req.file.filename);
     }
     errorHandler(err, req, res);
   }
@@ -70,7 +76,10 @@ const show = async (req, res) => {
 
 const update = async (req, res) => {
   const { id } = req.params;
-  const { title, description, img, visible, categories } = req.body;
+  const { title, description, visible, categories } = req.body;
+  const img = req.file
+    ? `${HOST}:${port}/foto_pics/${req.file.filename}`
+    : null;
 
   try {
     const currentFoto = await prisma.foto.findUnique({
@@ -89,7 +98,7 @@ const update = async (req, res) => {
       title: title || currentFoto.title,
       description: description || currentFoto.description,
       img: img || currentFoto.img,
-      visible: visible !== undefined ? visible : currentFoto.visible,
+      visible: visible !== undefined ? visible === 'true' : currentFoto.visible,
       categories: {
         set: categories.map((categoryId) => ({ id: parseInt(categoryId) })),
       },
