@@ -10,6 +10,8 @@ require('dotenv').config();
 const { PORT, HOST } = process.env;
 const port = PORT || 3000;
 
+app.use(express.json());
+
 app.use('/fotos', fotoRouter);
 
 app.use(notFound);
