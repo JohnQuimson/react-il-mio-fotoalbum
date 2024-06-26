@@ -12,3 +12,34 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Foto {
+  id          Int        @id @default(autoincrement())
+  title       String
+  description String
+  img         String?
+  visible     Boolean
+  categories  Category[]
+  createAt    DateTime   @default(now())
+  updateAt    DateTime   @updatedAt
+  User        User?      @relation(fields: [userId], references: [id])
+  userId      Int?
+}
+
+model Category {
+  id       Int      @id @default(autoincrement())
+  name     String
+  fotos    Foto[]
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  password  String
+  fotos     Foto[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
