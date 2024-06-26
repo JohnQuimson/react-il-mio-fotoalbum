@@ -40,11 +40,34 @@ const index = async (req, res) => {
 
     res.status(200).json(fotos);
   } catch (err) {
-    res.status(500).json({ error: 'Errore nel recuper delle Foto' });
+    res.status(500).json({ error: 'Errore nel recupero delle Foto' });
   }
 };
 
-const show = async (req, res) => {};
+const show = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const foto = await prisma.foto.findUnique({
+      where: {
+        id: parseInt(id),
+      },
+      include: {
+        categories: true,
+      },
+    });
+
+    // controllo se la foto non esiste
+    if (!foto) {
+      return res.status(404).json({ error: 'Nessuna foto trovata' });
+    }
+
+    res.status(200).json(foto);
+  } catch (err) {
+    res.status(500).json({ error: 'Errore nel recupero della Foto' });
+  }
+};
+
 const update = async (req, res) => {};
 const destroy = async (req, res) => {};
 
