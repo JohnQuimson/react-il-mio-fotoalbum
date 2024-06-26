@@ -77,7 +77,33 @@ const update = async (req, res) => {
   }
 };
 
-const destroy = async (req, res) => {};
+const destroy = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const existingCategory = await prisma.category.findUnique({
+      where: {
+        id: parseInt(id),
+      },
+    });
+
+    if (!existingCategory) {
+      return res.status(404).json({ error: 'Nessuna categoria trovata' });
+    }
+
+    await prisma.category.delete({
+      where: {
+        id: parseInt(id),
+      },
+    });
+
+    res
+      .status(200)
+      .json({ message: `Categoria con id ${id} cancellato con successo` });
+  } catch (err) {
+    errorHandler(err, req, res);
+  }
+};
 
 module.exports = {
   store,
