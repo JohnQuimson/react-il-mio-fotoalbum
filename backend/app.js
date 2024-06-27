@@ -16,6 +16,7 @@ app.use(express.static('public'));
 
 app.use(express.json());
 
+// Rotte
 app.use('/auth', authRouter);
 app.use('/fotos', fotoRouter);
 app.use('/categories', categoriesRouter);

@@ -5,6 +5,9 @@ const { PORT, HOST } = process.env;
 const port = PORT || 3000;
 const errorHandler = require('../middlewares/errorHandler.js');
 
+// -------------------------------------------
+// STORE
+// -------------------------------------------
 const store = async (req, res) => {
   const { name } = req.body;
 
@@ -18,6 +21,9 @@ const store = async (req, res) => {
   }
 };
 
+// -------------------------------------------
+// INDEX
+// -------------------------------------------
 const index = async (req, res) => {
   try {
     const categories = await prisma.category.findMany();
@@ -27,6 +33,9 @@ const index = async (req, res) => {
   }
 };
 
+// -------------------------------------------
+// SHOW
+// -------------------------------------------
 const show = async (req, res) => {
   const { id } = req.params;
 
@@ -47,6 +56,9 @@ const show = async (req, res) => {
   }
 };
 
+// -------------------------------------------
+// UPDATE
+// -------------------------------------------
 const update = async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
@@ -77,6 +89,9 @@ const update = async (req, res) => {
   }
 };
 
+// -------------------------------------------
+// DESTROY
+// -------------------------------------------
 const destroy = async (req, res) => {
   const { id } = req.params;
 
