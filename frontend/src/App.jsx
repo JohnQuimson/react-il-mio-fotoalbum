@@ -5,6 +5,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Fotos from './pages/Fotos';
+import SingleFoto from './pages/SingleFoto';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
                 <Route index element={<Home />} />
                 <Route path="/fotos" element={<Fotos />} />
                 <Route path="/contacts" element={<Contact />} />
+                <Route path="fotos/:id" element={<SingleFoto />} />
               </Route>
             </Routes>
           </AuthProvider>

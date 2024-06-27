@@ -1,6 +1,6 @@
 import axios from './utils/axiosClient.js';
 import Form from './components/Form';
-import ElencoPost from './components/ElencoFoto.jsx';
+import ElencoFoto from './components/ElencoFoto.jsx';
 
 export default function () {
   const [response, setResponse] = useState(null);

@@ -7,7 +7,7 @@ export default function ({ id, title, description, img, visible, categories }) {
         <div className={`foto ${visible ? 'visible' : ''}`}>
           {/* Img */}
           <div className="card-image">
-            <img src={img} alt="foto Random" />
+            <img src={img} alt="img" />
           </div>
           <div className="card-content">
             <h3>{title}</h3>
@@ -21,7 +21,7 @@ export default function ({ id, title, description, img, visible, categories }) {
                 </ul>
               </div>
             ) : (
-              <strong>Categorie non specificati</strong>
+              <strong>Categorie non specificate</strong>
             )}
             <p>{description}</p>
           </div>

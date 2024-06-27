@@ -1,26 +1,26 @@
 import FotoCard from './FotoCard';
 
-const ElencoFoto = ({ response }) => {
-  console.log('Response in ElencoFoto: ', response);
+// const ElencoFoto = ({ response }) => {
+//   console.log('Response in ElencoFoto: ', response);
 
-  const fotos = response?.data || [];
-  console.log('fotos:', fotos);
+//   const fotos = response?.data || [];
+//   console.log('fotos:', fotos);
 
-  return (
-    <div className="fotos">
-      {fotos.map((foto) => (
-        <div className="foto">
-          <h2>{foto.title}</h2>
-        </div>
-      ))}
-    </div>
-  );
-};
+//   return (
+//     <div className="fotos">
+//       {fotos.map((foto) => (
+//         <div className="foto">
+//           <h2>{foto.title}</h2>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
 
-/*export default function ({ response }) {
+export default function ({ response }) {
   return (
     <>
-       <div className="fotos">
+      <div className="fotos">
         {response === null && 'Caricando foto'}
         {response?.data?.length === 0 && 'Nessuna foto trovata.'}
         {response?.data?.length > 0 &&
@@ -35,9 +35,9 @@ const ElencoFoto = ({ response }) => {
               categories={f.categories.map((i) => i.name)}
             />
           ))}
-      </div> 
+      </div>
     </>
   );
-}*/
+}
 
-export default ElencoPost;
+// export default ElencoPost;
