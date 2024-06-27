@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 const errorHandler = require('./middlewares/errorHandler.js');
 const notFound = require('./middlewares/notFound.js');
@@ -12,6 +13,8 @@ const messageRouter = require('./routers/messages.js');
 require('dotenv').config();
 const { PORT, HOST } = process.env;
 const port = PORT || 3000;
+
+app.use(cors());
 
 app.use(express.static('public'));
 

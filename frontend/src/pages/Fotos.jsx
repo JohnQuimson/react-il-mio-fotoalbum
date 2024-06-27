@@ -1,7 +1,27 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+import axios from '../utils/axiosClient';
 
-const Fotos = () => {
-  return <div>Fotos</div>;
-};
+export default function () {
+  const [fotos, setFotos] = useState(null);
 
-export default Fotos;
+  useEffect(() => {
+    axios.get('/fotos').then(({ data }) => setFotos(data));
+  }, []);
+
+  console.log(fotos);
+
+  return (
+    <>
+      <h1>foto</h1>
+      {fotos === null ? (
+        <p>Loading...</p>
+      ) : (
+        <ul>
+          {fotos.map((f) => (
+            <li key={`foto${f.id}`}>{f.title}</li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
+}
