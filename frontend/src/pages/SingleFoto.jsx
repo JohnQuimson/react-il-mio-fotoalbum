@@ -42,7 +42,9 @@ export default function SingleFoto() {
           visible={foto.visible}
           categories={foto.categories.map((i) => i.name)}
         />
-        <button onClick={() => deleteFoto(foto.id)}>Delete</button>
+        <button onClick={() => deleteFoto(foto.id)} className="btn btn-danger">
+          Delete
+        </button>
       </div>
     </>
   );
