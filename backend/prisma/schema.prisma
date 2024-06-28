@@ -46,6 +46,8 @@ model User {
 
 model Message {
   id        Int      @id @default(autoincrement())
+  name      String
+  surname   String
   email     String
   content   String
   createdAt DateTime @default(now())

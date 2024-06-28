@@ -9,9 +9,9 @@ const errorHandler = require('../middlewares/errorHandler.js');
 // STORE
 // -------------------------------------------
 const store = async (req, res) => {
-  const { email, content } = req.body;
+  const { email, content, name, surname } = req.body;
 
-  const data = { email, content };
+  const data = { email, content, name, surname };
 
   try {
     const message = await prisma.message.create({ data });
@@ -61,7 +61,7 @@ const show = async (req, res) => {
 // -------------------------------------------
 const update = async (req, res) => {
   const { id } = req.params;
-  const { email, content } = req.body;
+  const { email, content, name, surname } = req.body;
 
   try {
     const existingMessage = await prisma.message.findUnique({
@@ -81,6 +81,8 @@ const update = async (req, res) => {
       data: {
         email: email || existingMessage.email,
         content: content || existingMessage.content,
+        name: name || existingMessage.name,
+        surname: surname || existingMessage.surname,
       },
     });
 
