@@ -6,10 +6,7 @@ const urlPages = [
     label: 'Home',
     href: '/',
   },
-  {
-    label: 'Foto',
-    href: '/fotos',
-  },
+
   {
     label: 'Contatti',
     href: '/contacts',

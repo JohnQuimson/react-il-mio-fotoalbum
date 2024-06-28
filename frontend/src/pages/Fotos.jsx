@@ -44,23 +44,26 @@ export default function () {
       <AboutFotographer />
 
       <section id="fotos" className="pt-4 pb-5">
-        <h3 className="text-end px-4 m-0">My work</h3>
-        {isLoggedIn && (
-          <Link to="/fotos/create" className="py-4">
-            Crea Foto +
-          </Link>
-        )}
-
-        {/* Categ Filter */}
-        <div className="text-end px-4 m-0 pt-3">
-          <select onChange={(e) => handleCategoryFilter(e.target.value)}>
-            <option value="">tutte le foto</option>
-            {categories.map((category, index) => (
-              <option key={index} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
+        {/* WORK HEADER */}
+        <div className="work-header d-flex justify-content-between">
+          <h3 className="text-start px-4 m-0">My work</h3>
+          {/* Crea Foto */}
+          {isLoggedIn && (
+            <Link to="/fotos/create" className="crea-foto">
+              Crea Foto
+            </Link>
+          )}
+          {/* Categ Filter */}
+          <div className="categ-filter text-end px-4 m-0">
+            <select onChange={(e) => handleCategoryFilter(e.target.value)}>
+              <option value="">tutte le foto</option>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {fotos === null ? (
