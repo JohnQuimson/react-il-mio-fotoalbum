@@ -2,6 +2,7 @@ import axios from '../utils/axiosClient';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import FotoCard from '../components/FotoCard';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function SingleFoto() {
   const { id } = useParams();
@@ -31,6 +32,8 @@ export default function SingleFoto() {
     return <div>Caricando foto...</div>;
   }
 
+  const { isLoggedIn, logout, user } = useAuth();
+
   return (
     <>
       <div className="single-foto">
@@ -42,10 +45,18 @@ export default function SingleFoto() {
           visible={foto.visible}
           categories={foto.categories.map((i) => i.name)}
         />
-        <Link to={`/fotos/${id}/edit`}>Modifica</Link>
-        <button onClick={() => deleteFoto(foto.id)} className="btn btn-danger">
-          Delete
-        </button>
+
+        {isLoggedIn && (
+          <div>
+            <Link to={`/fotos/${id}/edit`}>Modifica</Link>
+            <button
+              onClick={() => deleteFoto(foto.id)}
+              className="btn btn-danger"
+            >
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import CreateFoto from './pages/CreateFoto';
 import EditFoto from './pages/EditFoto';
+import AdminPage from './middlewares/AdminPage';
 
 const App = () => {
   return (
@@ -22,11 +23,13 @@ const App = () => {
               {/* Rotte Pubbliche */}
               <Route path="/" element={<DefaultLayout />}>
                 <Route index element={<Home />} />
-                <Route path="fotos" element={<Fotos />} />
                 <Route path="contacts" element={<Contact />} />
                 <Route path="login" element={<Login />} />
                 <Route path="signup" element={<Signup />} />
+                <Route path="fotos" element={<Fotos />} />
+                <Route path="fotos/:id" element={<SingleFoto />} />
               </Route>
+
               {/* Rotte Private */}
               <Route
                 path="/"
@@ -37,7 +40,6 @@ const App = () => {
                 }
               >
                 <Route path="fotos">
-                  <Route path=":id" element={<SingleFoto />} />
                   <Route path=":id/edit" element={<EditFoto />} />
                   <Route path="create" element={<CreateFoto />} />
                 </Route>
