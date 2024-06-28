@@ -41,9 +41,6 @@ export default function () {
                 <NavLink to={`/login`} className="login-btn">
                   Login
                 </NavLink>
-                <NavLink to={`/signup`} className="register">
-                  Registrati
-                </NavLink>
               </li>
             </>
           )}

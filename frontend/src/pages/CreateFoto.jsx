@@ -22,7 +22,7 @@ export default function () {
   return (
     <>
       <div>
-        <Link to="../" relative="path">
+        <Link to="/" relative="path">
           Go Back
         </Link>
         <FormFotos onSubmit={createFoto} />

@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const AboutFotographer = () => {
   return (
-    <section id="about">
+    <section id="about" className="pt-2 pb-5">
       <div className="row m-0">
         <div className="col-12 col-md-6">
           <h1>Photographer</h1>
@@ -12,6 +13,7 @@ const AboutFotographer = () => {
             tenetur similique unde iusto incidunt et voluptatum corrupti
             repudiandae molestias facere.
           </p>
+          <NavLink to={`/contacts`}>Mettiamoci in contatto!</NavLink>
         </div>
         <div className="col-12 col-md-6">
           <div className="cont-img">

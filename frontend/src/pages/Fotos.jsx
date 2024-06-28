@@ -6,33 +6,84 @@ import AboutFotographer from '../components/AboutFotographer';
 
 export default function () {
   const [fotos, setFotos] = useState(null);
+  const [filteredFotos, setFilteredFotos] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
-    axios.get('/fotos').then(({ data }) => setFotos(data));
+    axios.get('/fotos').then(({ data }) => {
+      setFotos(data);
+
+      const allCategories = data.reduce((acc, curr) => {
+        curr.categories.forEach((category) => {
+          if (!acc.includes(category.name)) {
+            acc.push(category.name);
+          }
+        });
+        return acc;
+      }, []);
+      setCategories(allCategories);
+    });
   }, []);
 
-  console.log(fotos);
+  const handleCategoryFilter = (category) => {
+    if (!category) {
+      setFilteredFotos(null);
+    } else {
+      const filtered = fotos.filter((foto) =>
+        foto.categories.some((cat) => cat.name === category)
+      );
+      setFilteredFotos(filtered);
+    }
+  };
 
-  const { isLoggedIn, logout, user } = useAuth();
+  console.log(fotos);
 
   return (
     <>
       <AboutFotographer />
-      <h1>foto</h1>
-      {isLoggedIn && <Link to="create">Crea Nuova Pizza</Link>}
-      {fotos === null ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {fotos.map((f) => (
-            <li key={`foto${f.id}`}>
-              <Link to={`/fotos/${f.id}`} state={{ foto: f }}>
-                {f.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+
+      <section id="fotos" className="pt-4 pb-5">
+        <h3 className="text-end px-4 m-0">My work</h3>
+        {isLoggedIn && (
+          <Link to="/fotos/create" className="py-4">
+            Crea Foto +
+          </Link>
+        )}
+
+        {/* Categ Filter */}
+        <div className="text-end px-4 m-0 pt-3">
+          <select onChange={(e) => handleCategoryFilter(e.target.value)}>
+            <option value="">tutte le foto</option>
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {fotos === null ? (
+          <p>Loading...</p>
+        ) : (
+          <ul className="row m-0 p-0">
+            {(filteredFotos || fotos).map((f) => (
+              <li
+                key={`foto${f.id}`}
+                className="col-12 col-sm-6 col-md-4 col-xl-3 g-4"
+              >
+                <Link to={`/fotos/${f.id}`} state={{ foto: f }}>
+                  <img
+                    src={f.img ? f.img : 'https://placehold.co/10x10'}
+                    alt="img"
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
     </>
   );
 }

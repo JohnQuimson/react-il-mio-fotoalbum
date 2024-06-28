@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function ({ id, title, description, img, visible, categories }) {
   return (
     <>
-      <Link to="../" relative="path">
+      <Link to="/" relative="path">
         Torna indietro
       </Link>
       <div className="foto-container">

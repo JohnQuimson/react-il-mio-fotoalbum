@@ -54,3 +54,23 @@ header {
     }
   }
 }
+
+#fotos {
+  color: white;
+  background-color: black;
+
+  ul {
+    list-style-type: none;
+
+    li {
+      img {
+        transition: transform 0.3s ease, border-color 0.3s ease;
+
+        &:hover {
+          border: 2px solid #b0b9b9;
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import { NavLink } from 'react-router-dom';
 
 export default function () {
   const { login } = useAuth();
@@ -54,6 +55,9 @@ export default function () {
             <div key={`err${index}`}>{err.msg}</div>
           ))}
         <button>Loggati</button>
+        <NavLink to={`/signup`} className="register">
+          Non hai un account? Registrati
+        </NavLink>
       </form>
     </>
   );
