@@ -1,19 +1,58 @@
 import React from 'react';
 import axios from '../utils/axiosClient';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function () {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: '',
-    message: '',
+    content: '',
+    name: '',
+    surname: '',
   });
 
-  onst handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/messages', formData);
+      console.log('Messaggio inviato con successo:', response.data);
+      navigate('/fotos');
+    } catch (error) {
+      console.error("Errore durante l'invio del messaggio:", error);
+    }
   };
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name">Nome:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="name">Cognome:</label>
+          <input
+            type="text"
+            id="surname"
+            name="surname"
+            value={formData.surname}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <div>
           <label htmlFor="email">Email:</label>
           <input
@@ -22,15 +61,17 @@ export default function () {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            required
           />
         </div>
         <div>
           <label htmlFor="message">Messaggio:</label>
           <textarea
-            id="message"
-            name="message"
-            value={formData.message}
+            id="content"
+            name="content"
+            value={formData.content}
             onChange={handleChange}
+            required
           />
         </div>
         <button type="submit">Invia Messaggio</button>
