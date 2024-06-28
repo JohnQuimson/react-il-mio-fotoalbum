@@ -13,7 +13,19 @@ export default function ({ id, title, description, img, visible, categories }) {
             className="card-image"
             style={{ width: '300px', height: '300px' }}
           >
-            <img src={img} alt="img" style={{ width: '100%' }} />
+            {img != null ? (
+              <img
+                src={img}
+                alt="img"
+                style={{ width: '100%', height: '100%' }}
+              />
+            ) : (
+              <img
+                src="https://placehold.co/600x400"
+                alt="placeholder"
+                style={{ width: '100%', height: '100%' }}
+              />
+            )}
           </div>
           <div className="card-content">
             <h3>{title}</h3>

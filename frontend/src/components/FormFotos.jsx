@@ -23,7 +23,6 @@ export default function FormFotos({ initialData, onSubmit }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Prepare the data to be sent to the backend
     console.log('FormData', formData);
     onSubmit(formData);
   };

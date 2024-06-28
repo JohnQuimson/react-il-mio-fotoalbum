@@ -16,6 +16,7 @@ export default function () {
     setDataToEdit({
       title: f.title,
       description: f.description,
+      img: '',
       visible: f.visible,
       categories: f.categories.map((i) => i.id),
     });
