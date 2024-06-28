@@ -2,16 +2,17 @@ import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function () {
-  const { login } = useAuth();
+  const { signup } = useAuth();
 
   const initialData = {
-    email: 'john@gmail.com',
+    email: 'provarec@gmail.com',
     password: 'Password',
+    name: 'Provaa',
   };
 
   const [formData, setFormData] = useState(initialData);
 
-  const [loginError, setLoginError] = useState(null);
+  const [signupError, setSignupError] = useState(null);
 
   const changeData = (key, value) => {
     setFormData((curr) => ({
@@ -23,37 +24,46 @@ export default function () {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(formData);
+      await signup(formData);
       setFormData(initialData);
     } catch (err) {
-      setLoginError(err);
+      setSignupError(err);
     }
   };
 
   return (
     <>
-      <h1>Login</h1>
+      <h1>Registrati</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Email"
+          required
           value={formData.email}
           onChange={(e) => changeData('email', e.target.value)}
         />
         <input
           type="password"
+          required
           placeholder="Password"
           value={formData.password}
           onChange={(e) => changeData('password', e.target.value)}
         />
-        {loginError !== null && (
-          <div className="error">{loginError.message}</div>
+        <input
+          type="text"
+          placeholder="Nome da visualizzare"
+          value={formData.name}
+          onChange={(e) => changeData('name', e.target.value)}
+        />
+
+        {signupError !== null && (
+          <div className="error">{signupError.message}</div>
         )}
-        {loginError?.errors &&
-          loginError.errors.map((err, index) => (
+        {signupError?.errors &&
+          signupError.errors.map((err, index) => (
             <div key={`err${index}`}>{err.msg}</div>
           ))}
-        <button>Loggati</button>
+        <button>Registrati</button>
       </form>
     </>
   );

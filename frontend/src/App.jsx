@@ -8,6 +8,7 @@ import Fotos from './pages/Fotos';
 import SingleFoto from './pages/SingleFoto';
 import PrivatePage from './middlewares/PrivatePage';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
                 <Route path="fotos" element={<Fotos />} />
                 <Route path="contacts" element={<Contact />} />
                 <Route path="login" element={<Login />} />
+                <Route path="signup" element={<Signup />} />
               </Route>
               {/* Rotte Private */}
               <Route

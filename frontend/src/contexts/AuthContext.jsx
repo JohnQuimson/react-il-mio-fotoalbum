@@ -28,10 +28,9 @@ const AuthProvider = ({ children }) => {
   const signup = async (payload) => {
     try {
       if (!payload.name) delete payload.name;
-      if (!payload.profile_pic) delete payload.profile_pic;
       const { data: response } = await axios.post('/auth/register', payload, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       });
       setUser(response.data);
@@ -39,6 +38,7 @@ const AuthProvider = ({ children }) => {
       navigate('/');
     } catch (err) {
       const { errors } = err.response.data;
+
       const error = new Error(errors ? 'Errore di Signup' : err.response.data);
       error.errors = errors;
       throw error;
