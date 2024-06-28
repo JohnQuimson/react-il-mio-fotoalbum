@@ -8,7 +8,7 @@ export default function FormFotos({ initialData, onSubmit }) {
     title: '',
     description: '',
     img: '',
-    visible: false,
+    visible: true,
     categories: [],
   };
 

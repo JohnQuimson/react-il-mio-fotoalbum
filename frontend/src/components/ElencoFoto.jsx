@@ -1,22 +1,5 @@
 import FotoCard from './FotoCard';
 
-// const ElencoFoto = ({ response }) => {
-//   console.log('Response in ElencoFoto: ', response);
-
-//   const fotos = response?.data || [];
-//   console.log('fotos:', fotos);
-
-//   return (
-//     <div className="fotos">
-//       {fotos.map((foto) => (
-//         <div className="foto">
-//           <h2>{foto.title}</h2>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
 export default function ({ response }) {
   return (
     <>

@@ -14,6 +14,7 @@ export default function () {
   return (
     <>
       <h1>foto</h1>
+      <Link to="create">Crea Nuova Pizza</Link>
       {fotos === null ? (
         <p>Loading...</p>
       ) : (
