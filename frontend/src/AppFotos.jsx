@@ -1,8 +1,11 @@
 import axios from './utils/axiosClient.js';
 import Form from './components/Form';
 import ElencoFoto from './components/ElencoFoto.jsx';
+import FormFotos from './components/FormFotos.jsx';
 
 export default function () {
+  const [showCreateForm, setShowCreateForm] = useState(false);
+
   const [response, setResponse] = useState(null);
 
   const fetchFotos = async () => {
@@ -37,6 +40,18 @@ export default function () {
 
   return (
     <>
+      {/* <div style={{ padding: '1rem' }}>
+        <button onClick={() => setShowCreateForm((curr) => !curr)}>
+          {showCreateForm ? 'Annulla' : 'Crea Pizza'}
+        </button>
+      </div> */}
+      <FormFotos
+        categories={categories}
+        onCreate={() => {
+          setShowCreateForm(false);
+          fetchFotos();
+        }}
+      />
       <ElencoFoto response={response} />
     </>
   );

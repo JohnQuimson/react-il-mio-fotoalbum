@@ -18,7 +18,7 @@ const store = async (req, res) => {
 
     visible: req.body.available ? true : false,
     categories: {
-      connect: categories.map((id) => ({ id: parseInt(id) })),
+      connect: categories,
     },
   };
 

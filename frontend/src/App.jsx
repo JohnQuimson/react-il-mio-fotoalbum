@@ -9,6 +9,7 @@ import SingleFoto from './pages/SingleFoto';
 import PrivatePage from './middlewares/PrivatePage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import CreateFoto from './pages/CreateFoto';
 
 const App = () => {
   return (
@@ -34,7 +35,10 @@ const App = () => {
                   </PrivatePage>
                 }
               >
-                <Route path="fotos/:id" element={<SingleFoto />} />
+                <Route path="fotos">
+                  <Route path=":id" element={<SingleFoto />} />
+                  <Route path="create" element={<CreateFoto />} />
+                </Route>
               </Route>
             </Routes>
           </AuthProvider>
