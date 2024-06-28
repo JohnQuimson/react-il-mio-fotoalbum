@@ -1,6 +1,6 @@
 import axios from '../utils/axiosClient';
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import FotoCard from '../components/FotoCard';
 
 export default function SingleFoto() {
@@ -42,6 +42,7 @@ export default function SingleFoto() {
           visible={foto.visible}
           categories={foto.categories.map((i) => i.name)}
         />
+        <Link to={`/fotos/${id}/edit`}>Modifica</Link>
         <button onClick={() => deleteFoto(foto.id)} className="btn btn-danger">
           Delete
         </button>

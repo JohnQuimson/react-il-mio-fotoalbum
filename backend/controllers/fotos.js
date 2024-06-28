@@ -87,44 +87,28 @@ const show = async (req, res) => {
 // UPDATE
 // -------------------------------------------
 const update = async (req, res) => {
-  const { id } = req.params;
-  const { title, description, visible, categories } = req.body;
-  const img = req.file
-    ? `${HOST}:${port}/foto_pics/${req.file.filename}`
-    : null;
-
   try {
-    const currentFoto = await prisma.foto.findUnique({
-      where: {
-        id: parseInt(id),
-      },
-    });
+    const { id } = req.params;
+    const { title, description, visible, categories } = req.body;
 
-    // controllo esistenza foto
-    if (!currentFoto) {
-      return res.status(404).json({ error: 'Nessuna foto trovata' });
-    }
-
-    // sostituzione dati con quelli nuovi
-    const updatedData = {
-      title: title || currentFoto.title,
-      description: description || currentFoto.description,
-      img: img || currentFoto.img,
-      visible: visible !== undefined ? visible === 'true' : currentFoto.visible,
+    const data = {
+      title,
+      description,
+      visible: req.body.visible ? true : false,
       categories: {
-        set: categories.map((categoryId) => ({ id: parseInt(categoryId) })),
+        set: categories,
       },
     };
 
-    // update nel db
-    const updatedFoto = await prisma.foto.update({
-      where: {
-        id: parseInt(id),
-      },
-      data: updatedData,
-    });
+    if (req.file) {
+      data.img = `${HOST}:${port}/foto_pics/${req.file.filename}`;
+    }
 
-    res.status(200).json(updatedFoto);
+    const foto = await prisma.foto.update({
+      where: { id: parseInt(id) },
+      data,
+    });
+    res.json(foto);
   } catch (err) {
     errorHandler(err, req, res);
   }
