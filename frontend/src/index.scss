@@ -3,3 +3,54 @@
   margin: 0;
   padding: 0;
 }
+
+header {
+  .navbar {
+    background-color: #c5d0d0;
+
+    .cont-logo {
+      width: 100px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    menu {
+      li {
+        a {
+          color: #718383;
+        }
+      }
+
+      .access {
+        position: relative;
+
+        .login-btn {
+          background-color: white;
+          padding: 10px 20px;
+          border-radius: 10px;
+          text-decoration: none;
+        }
+
+        .register {
+          font-size: 12px;
+          position: absolute;
+          top: 50px;
+        }
+      }
+    }
+  }
+}
+
+#about {
+  background-color: #c5d0d0;
+  .cont-img {
+    border: 1px solid red;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+}

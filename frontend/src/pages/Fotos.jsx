@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from '../utils/axiosClient';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import AboutFotographer from '../components/AboutFotographer';
 
 export default function () {
   const [fotos, setFotos] = useState(null);
@@ -16,6 +17,7 @@ export default function () {
 
   return (
     <>
+      <AboutFotographer />
       <h1>foto</h1>
       {isLoggedIn && <Link to="create">Crea Nuova Pizza</Link>}
       {fotos === null ? (

@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const urlPages = [
@@ -20,20 +20,30 @@ export default function () {
   const { isLoggedIn, logout, user } = useAuth();
   return (
     <header>
-      <nav className="navbar">
-        <menu>
+      <nav className="navbar px-3">
+        <NavLink to={`/`}>
+          <div className="cont-logo">
+            <img src="../public/logo.png" alt="" />
+          </div>
+        </NavLink>
+
+        <menu className="d-flex align-items-center list-unstyled ">
           {urlPages.map(({ label, href }, i) => (
-            <li key={`urlPage${i}`}>
-              <NavLink to={href}>{label}</NavLink>
+            <li key={`urlPage${i}`} className="mx-3 ">
+              <NavLink to={href} className="text-decoration-none">
+                {label}
+              </NavLink>
             </li>
           ))}
           {!isLoggedIn && (
             <>
-              <li>
-                <NavLink to={`/login`}>Login</NavLink>
-              </li>
-              <li>
-                <NavLink to={`/signup`}>Registrati</NavLink>
+              <li className="d-flex flex-column align-items-center access">
+                <NavLink to={`/login`} className="login-btn">
+                  Login
+                </NavLink>
+                <NavLink to={`/signup`} className="register">
+                  Registrati
+                </NavLink>
               </li>
             </>
           )}
