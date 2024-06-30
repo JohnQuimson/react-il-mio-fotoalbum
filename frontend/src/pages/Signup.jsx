@@ -33,38 +33,42 @@ export default function () {
 
   return (
     <>
-      <h1>Registrati</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Email"
-          required
-          value={formData.email}
-          onChange={(e) => changeData('email', e.target.value)}
-        />
-        <input
-          type="password"
-          required
-          placeholder="Password"
-          value={formData.password}
-          onChange={(e) => changeData('password', e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Nome da visualizzare"
-          value={formData.name}
-          onChange={(e) => changeData('name', e.target.value)}
-        />
+      <div id="register">
+        <h1>Registrati</h1>
+        <div className="register-form-cont">
+          <form onSubmit={handleSubmit} className="register-form">
+            <input
+              type="text"
+              placeholder="Email"
+              required
+              value={formData.email}
+              onChange={(e) => changeData('email', e.target.value)}
+            />
+            <input
+              type="password"
+              required
+              placeholder="Password"
+              value={formData.password}
+              onChange={(e) => changeData('password', e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Nome da visualizzare"
+              value={formData.name}
+              onChange={(e) => changeData('name', e.target.value)}
+            />
 
-        {signupError !== null && (
-          <div className="error">{signupError.message}</div>
-        )}
-        {signupError?.errors &&
-          signupError.errors.map((err, index) => (
-            <div key={`err${index}`}>{err.msg}</div>
-          ))}
-        <button>Registrati</button>
-      </form>
+            {signupError !== null && (
+              <div className="error">{signupError.message}</div>
+            )}
+            {signupError?.errors &&
+              signupError.errors.map((err, index) => (
+                <div key={`err${index}`}>{err.msg}</div>
+              ))}
+            <button>Registrati</button>
+          </form>
+        </div>
+      </div>
     </>
   );
 }

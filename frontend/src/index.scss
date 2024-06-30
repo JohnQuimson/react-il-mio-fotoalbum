@@ -434,3 +434,44 @@ header {
     }
   }
 }
+
+#register {
+  position: relative;
+  height: 85vh;
+  background-color: #c5d0d0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .register-form-cont {
+    width: 50%;
+
+    .register-form {
+      width: 100%;
+      padding-top: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      input {
+        background-color: transparent;
+        border: 1px solid #718383;
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      button {
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 5px 20px;
+        align-self: start;
+
+        &:hover {
+          background-color: #669c9c;
+          color: white;
+        }
+      }
+    }
+  }
+}
