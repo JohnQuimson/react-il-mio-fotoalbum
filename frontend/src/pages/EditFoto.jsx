@@ -46,13 +46,13 @@ export default function () {
   return (
     <section id="edit-foto">
       <h1>Modifica </h1>
-      <div className="edit-form-cont">
+      <div className="edit-form-cont border">
         {dataToEdit === null ? (
           <p>Loading...</p>
         ) : (
-          <div className="border">
+          <div className="">
             <FormFotos initialData={dataToEdit} onSubmit={updateFoto} />
-            <Link to="../" relative="path">
+            <Link to="../" relative="path" className="annulla">
               Annulla
             </Link>
           </div>

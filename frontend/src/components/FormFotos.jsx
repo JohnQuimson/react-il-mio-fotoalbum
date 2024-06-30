@@ -105,7 +105,7 @@ export default function FormFotos({ initialData, onSubmit }) {
             );
         }
       })}
-      <button>Salva</button>
+      <button className="salva">Salva</button>
     </form>
   );
 }

@@ -13,6 +13,11 @@
   transition: transform 0.3s ease-in-out;
 }
 
+.salva:hover {
+  background-color: #669c9c;
+  color: white;
+}
+
 .go-back:hover {
   transform: scale(1.5);
 }
@@ -34,6 +39,10 @@ header {
       li {
         a {
           color: #718383;
+
+          &:hover {
+            color: #013030;
+          }
         }
       }
 
@@ -150,6 +159,10 @@ header {
         border-radius: 10px;
         padding: 5px 20px;
         align-self: start;
+
+        &:hover {
+          background-color: #246666;
+        }
       }
 
       p {
@@ -241,16 +254,16 @@ header {
 
       img {
         width: 100%;
-        max-height: 50vh; /* Imposta l'altezza massima al 50% della viewport */
-        object-fit: cover; /* Assicura che l'immagine si adatti al contenitore senza distorsioni */
+        max-height: 50vh;
+        object-fit: cover;
       }
     }
 
     .card-content {
       margin: 0 auto;
-      text-align: center; /* Centra il testo */
-      max-height: 50vh; /* Imposta l'altezza massima al 50% della viewport */
-      overflow-y: auto; /* Aggiunge una barra di scorrimento se il contenuto eccede l'altezza massima */
+      text-align: center;
+      max-height: 50vh;
+      overflow-y: auto;
 
       h3 {
         margin-top: 10px;
@@ -259,21 +272,21 @@ header {
       }
 
       p {
-        margin: 0 auto; /* Centra il paragrafo */
+        margin: 0 auto;
       }
 
       .categories {
-        margin: 0 auto; /* Centra la lista delle categorie */
+        margin: 0 auto;
 
         ul {
-          list-style-type: none; /* Rimuove i punti elenco */
+          list-style-type: none;
           padding: 0;
 
           li {
-            display: inline; /* Rende gli elementi affiancati */
+            display: inline;
 
             &:not(:last-child)::after {
-              content: ', '; /* Aggiunge una virgola dopo ogni elemento tranne l'ultimo */
+              content: ', ';
             }
           }
         }
@@ -329,5 +342,23 @@ header {
 
   .edit-form-cont {
     width: 50%;
+    position: relative;
+  }
+
+  .annulla {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(126, 126, 126);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 20px;
+    align-self: start;
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgb(90, 90, 90);
+    }
   }
 }
