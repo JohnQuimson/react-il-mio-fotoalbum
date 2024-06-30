@@ -68,12 +68,43 @@ header {
 
 #about {
   background-color: #c5d0d0;
-  .cont-img {
-    border: 1px solid red;
-    width: 100%;
 
-    img {
+  .col-sx {
+    width: 80%;
+    margin: 0 auto;
+
+    h1 {
+      margin-top: 50px;
+      font-size: 56px;
+    }
+
+    p {
+      margin-top: 20px;
+    }
+
+    a {
+      color: #718383;
+      text-decoration: none;
+
+      &:hover {
+        color: #013030;
+      }
+    }
+  }
+
+  .col-dx {
+    width: 50%;
+    margin: 0 auto;
+
+    .cont-img {
       width: 100%;
+      border-radius: 20px;
+
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
     }
   }
 }

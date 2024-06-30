@@ -20,7 +20,7 @@ export default function () {
       <nav className="navbar px-3">
         <NavLink to={`/`}>
           <div className="cont-logo">
-            <img src="../public/logo.png" alt="" />
+            <img src="/logo.png" alt="logo" />
           </div>
         </NavLink>
 
