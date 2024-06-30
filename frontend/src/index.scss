@@ -54,6 +54,11 @@ header {
         }
       }
 
+      .message {
+        text-decoration: none;
+        padding: 0 10px;
+      }
+
       .user {
         display: flex;
         flex-direction: column;

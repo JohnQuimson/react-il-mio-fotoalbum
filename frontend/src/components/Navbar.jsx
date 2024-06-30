@@ -32,6 +32,15 @@ export default function () {
               </NavLink>
             </li>
           ))}
+          {isLoggedIn && (
+            <>
+              <li className="d-flex flex-column align-items-center access">
+                <NavLink to={`/messages`} className="message">
+                  Messaggi
+                </NavLink>
+              </li>
+            </>
+          )}
           {!isLoggedIn && (
             <>
               <li className="d-flex flex-column align-items-center access">
