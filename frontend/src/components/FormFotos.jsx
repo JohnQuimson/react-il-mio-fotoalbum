@@ -28,13 +28,13 @@ export default function FormFotos({ initialData, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-fotos">
       {Object.keys(defaultData).map((name, index) => {
         const value = defaultData[name];
         if (Array.isArray(value)) {
           return (
-            <div key={`formElement${index}`}>
-              <p>Categorie:</p>
+            <div key={`formElement${index}`} className="categories">
+              <p className="m-0 form-title">Categorie:</p>
               <ul>
                 {categories.map(({ id, name }, index) => (
                   <li key={`cat${index}`}>
@@ -50,7 +50,7 @@ export default function FormFotos({ initialData, onSubmit }) {
                           handleField('categories', newCategories);
                         }}
                       />
-                      {name}
+                      <span>{name}</span>
                     </label>
                   </li>
                 ))}
@@ -62,7 +62,7 @@ export default function FormFotos({ initialData, onSubmit }) {
           case 'boolean':
             return (
               <label key={`formElement${index}`}>
-                {name}
+                <p className="form-title">Visibilità</p>
                 <input
                   name={name}
                   type="checkbox"
@@ -74,8 +74,8 @@ export default function FormFotos({ initialData, onSubmit }) {
           default:
             if (name === 'img') {
               return (
-                <label key={`formElement${index}`}>
-                  {name}
+                <label key={`formElement${index}`} className="img-form">
+                  <span className="form-title">{name}</span>
                   <input
                     type="file"
                     onChange={(e) => handleField(name, e.target.files[0])}
@@ -84,22 +84,24 @@ export default function FormFotos({ initialData, onSubmit }) {
               );
             }
             return (
-              <input
-                key={`formElement${index}`}
-                required
-                name={name}
-                type={typeof value === 'number' ? 'number' : 'text'}
-                placeholder={name}
-                value={formData[name] || ''}
-                onChange={(e) =>
-                  handleField(
-                    name,
-                    typeof value === 'number'
-                      ? Number(e.target.value)
-                      : e.target.value
-                  )
-                }
-              />
+              <label className="text">
+                <p className="form-title">{name}</p>
+                <input
+                  key={`formElement${index}`}
+                  required
+                  name={name}
+                  type={typeof value === 'number' ? 'number' : 'text'}
+                  value={formData[name] || ''}
+                  onChange={(e) =>
+                    handleField(
+                      name,
+                      typeof value === 'number'
+                        ? Number(e.target.value)
+                        : e.target.value
+                    )
+                  }
+                />
+              </label>
             );
         }
       })}

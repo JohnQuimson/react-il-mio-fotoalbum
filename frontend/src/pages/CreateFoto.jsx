@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import axios from '../utils/axiosClient';
 import FormFotos from '../components/FormFotos';
+import { FaArrowLeftLong } from 'react-icons/fa6';
 
 export default function () {
   const navigate = useNavigate();
@@ -21,12 +22,12 @@ export default function () {
 
   return (
     <>
-      <div>
-        <Link to="/" relative="path">
-          Go Back
+      <section id="create">
+        <Link to="/" relative="path" className="go-back">
+          <FaArrowLeftLong />
         </Link>
         <FormFotos onSubmit={createFoto} />
-      </div>
+      </section>
     </>
   );
 }

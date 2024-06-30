@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from '../utils/axiosClient';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { FaArrowLeftLong } from 'react-icons/fa6';
 
 export default function ContactForm() {
   const navigate = useNavigate();
@@ -39,6 +41,9 @@ export default function ContactForm() {
   return (
     <>
       <section id="contacts">
+        <Link to="/" relative="path" className="go-back">
+          <FaArrowLeftLong />
+        </Link>
         <form onSubmit={handleSubmit} className="">
           <div className="cont-info">
             <label htmlFor="name">Nome:</label>

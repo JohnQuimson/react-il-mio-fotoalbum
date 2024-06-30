@@ -4,6 +4,19 @@
   padding: 0;
 }
 
+.go-back {
+  position: absolute;
+  left: 60px;
+  top: 50px;
+  font-size: 28px;
+  color: #718383;
+  transition: transform 0.3s ease-in-out;
+}
+
+.go-back:hover {
+  transform: scale(1.5);
+}
+
 header {
   .navbar {
     background-color: #c5d0d0;
@@ -98,6 +111,7 @@ header {
 }
 
 #contacts {
+  position: relative;
   height: 85vh;
   background-color: #c5d0d0;
   display: flex;
@@ -139,5 +153,63 @@ header {
       align-self: center;
       border-radius: 10px;
     }
+  }
+}
+
+#create {
+  height: 85vh;
+  background-color: #c5d0d0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.form-fotos {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding-top: 50px;
+  gap: 20px;
+
+  .form-title {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .img-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .categories {
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        label {
+          display: flex;
+          gap: 10px;
+        }
+      }
+    }
+  }
+
+  .text {
+    input {
+      width: 100%;
+      background-color: transparent;
+      border: 1px solid #718383;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  }
+
+  button {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 20px;
+    align-self: start;
   }
 }
