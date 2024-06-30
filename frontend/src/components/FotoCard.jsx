@@ -9,7 +9,7 @@ export default function ({ id, title, description, img, visible, categories }) {
       <Link to="/" relative="path" className="go-back">
         <FaArrowLeftLong />
       </Link>
-      <div className="foto-container">
+      <div className="foto-card">
         <div className={`foto ${visible ? 'visible' : ''}`}>
           {/* Img */}
           <div className="card-image">
