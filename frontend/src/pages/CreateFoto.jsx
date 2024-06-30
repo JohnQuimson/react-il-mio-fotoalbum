@@ -16,7 +16,7 @@ export default function () {
     });
     console.log(res);
     if (res.status < 400) {
-      navigate(`/fotos/${res.data.id}`);
+      navigate(`/`);
     }
   };
 
