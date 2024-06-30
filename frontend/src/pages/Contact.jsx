@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from '../utils/axiosClient';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function () {
+export default function ContactForm() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -12,6 +11,8 @@ export default function () {
     name: '',
     surname: '',
   });
+
+  const [messageSent, setMessageSent] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,15 +24,22 @@ export default function () {
     try {
       const response = await axios.post('/messages', formData);
       console.log('Messaggio inviato con successo:', response.data);
-      navigate('/');
+      setMessageSent(true);
+      setFormData({
+        email: '',
+        content: '',
+        name: '',
+        surname: '',
+      });
     } catch (error) {
       console.error("Errore durante l'invio del messaggio:", error);
     }
   };
+
   return (
     <>
       <section id="contacts">
-        <form onSubmit={handleSubmit} className="border">
+        <form onSubmit={handleSubmit} className="">
           <div className="cont-info">
             <label htmlFor="name">Nome:</label>
             <input
@@ -44,7 +52,7 @@ export default function () {
             />
           </div>
           <div className="cont-info">
-            <label htmlFor="name">Cognome:</label>
+            <label htmlFor="surname">Cognome:</label>
             <input
               type="text"
               id="surname"
@@ -66,7 +74,7 @@ export default function () {
             />
           </div>
           <div className="cont-info">
-            <label htmlFor="message">Messaggio:</label>
+            <label htmlFor="content">Messaggio:</label>
             <textarea
               id="content"
               name="content"
@@ -75,7 +83,8 @@ export default function () {
               required
             />
           </div>
-          <button type="submit">Invia Messaggio</button>
+          <button type="submit">Invia</button>
+          {messageSent && <p>Messaggio inviato correttamente!</p>}
         </form>
       </section>
     </>
