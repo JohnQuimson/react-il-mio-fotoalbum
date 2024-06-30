@@ -3,6 +3,7 @@ import axios from '../utils/axiosClient';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import AboutFotographer from '../components/AboutFotographer';
+import { MdKeyboardArrowUp } from 'react-icons/md';
 
 export default function () {
   const [fotos, setFotos] = useState(null);
@@ -24,6 +25,22 @@ export default function () {
       }, []);
       setCategories(allCategories);
     });
+
+    // gestore per tornare su
+    const handleScroll = () => {
+      const goUpButton = document.querySelector('.go-up');
+      if (window.scrollY > 300) {
+        goUpButton.style.display = 'block';
+      } else {
+        goUpButton.style.display = 'none';
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const handleCategoryFilter = (category) => {
@@ -37,7 +54,9 @@ export default function () {
     }
   };
 
-  console.log(fotos);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -86,6 +105,9 @@ export default function () {
             ))}
           </ul>
         )}
+        <div className="go-up" onClick={scrollToTop}>
+          <MdKeyboardArrowUp />
+        </div>
       </section>
     </>
   );
