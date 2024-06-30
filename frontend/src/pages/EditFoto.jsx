@@ -44,21 +44,20 @@ export default function () {
   };
 
   return (
-    <div>
-      <nav className="navbar">
-        <menu>
-          <li>
+    <section id="edit-foto">
+      <h1>Modifica </h1>
+      <div className="edit-form-cont">
+        {dataToEdit === null ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="border">
+            <FormFotos initialData={dataToEdit} onSubmit={updateFoto} />
             <Link to="../" relative="path">
               Annulla
             </Link>
-          </li>
-        </menu>
-      </nav>
-      {dataToEdit === null ? (
-        <div>Loading...</div>
-      ) : (
-        <FormFotos initialData={dataToEdit} onSubmit={updateFoto} />
-      )}
-    </div>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }

@@ -117,41 +117,49 @@ header {
   display: flex;
   justify-content: center;
 
-  form {
+  .contacts-form-cont {
     width: 50%;
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 
-    .cont-info {
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      width: 100%;
+      padding-top: 50px;
       display: flex;
       flex-direction: column;
+      gap: 20px;
 
-      input,
-      textarea {
-        background-color: transparent;
-        border: 1px solid #718383;
-        border-radius: 10px;
-        padding: 10px;
+      .cont-info {
+        display: flex;
+        flex-direction: column;
+
+        input,
+        textarea {
+          background-color: transparent;
+          border: 1px solid #718383;
+          border-radius: 10px;
+          padding: 10px;
+        }
       }
-    }
 
-    button {
-      background-color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 5px 20px;
-      align-self: start;
-    }
+      button {
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 5px 20px;
+        align-self: start;
+      }
 
-    p {
-      background-color: rgb(29, 139, 88);
-      text-align: center;
-      color: white;
-      padding: 5px 30px;
-      align-self: center;
-      border-radius: 10px;
+      p {
+        background-color: rgb(29, 139, 88);
+        text-align: center;
+        color: white;
+        padding: 5px 30px;
+        align-self: center;
+        border-radius: 10px;
+      }
     }
   }
 }
@@ -162,13 +170,17 @@ header {
   display: flex;
   justify-content: center;
   position: relative;
+
+  .create-form-cont {
+    width: 50%;
+  }
 }
 
 .form-fotos {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  padding-top: 50px;
+  width: 100%;
+  padding-top: 30px;
   gap: 20px;
 
   .form-title {
@@ -216,18 +228,55 @@ header {
 
 #single-foto {
   position: relative;
-  height: 85vh;
   background-color: #c5d0d0;
   display: flex;
   align-items: center;
   flex-direction: column;
+  height: 85vh;
 
   .foto-container {
+    .card-image {
+      width: 50%;
+      margin: 0 auto;
+
+      img {
+        width: 100%;
+        max-height: 50vh; /* Imposta l'altezza massima al 50% della viewport */
+        object-fit: cover; /* Assicura che l'immagine si adatti al contenitore senza distorsioni */
+      }
+    }
+
     .card-content {
+      margin: 0 auto;
+      text-align: center; /* Centra il testo */
+      max-height: 50vh; /* Imposta l'altezza massima al 50% della viewport */
+      overflow-y: auto; /* Aggiunge una barra di scorrimento se il contenuto eccede l'altezza massima */
+
       h3 {
         margin-top: 10px;
         text-transform: uppercase;
         color: #424d4d;
+      }
+
+      p {
+        margin: 0 auto; /* Centra il paragrafo */
+      }
+
+      .categories {
+        margin: 0 auto; /* Centra la lista delle categorie */
+
+        ul {
+          list-style-type: none; /* Rimuove i punti elenco */
+          padding: 0;
+
+          li {
+            display: inline; /* Rende gli elementi affiancati */
+
+            &:not(:last-child)::after {
+              content: ', '; /* Aggiunge una virgola dopo ogni elemento tranne l'ultimo */
+            }
+          }
+        }
       }
     }
   }
@@ -267,5 +316,18 @@ header {
         background-color: rgb(255, 80, 80);
       }
     }
+  }
+}
+
+#edit-foto {
+  position: relative;
+  height: 85vh;
+  background-color: #c5d0d0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .edit-form-cont {
+    width: 50%;
   }
 }

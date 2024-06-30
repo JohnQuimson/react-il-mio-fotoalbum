@@ -23,10 +23,13 @@ export default function () {
   return (
     <>
       <section id="create">
-        <Link to="/" relative="path" className="go-back">
-          <FaArrowLeftLong />
-        </Link>
-        <FormFotos onSubmit={createFoto} />
+        <div className="create-form-cont">
+          <h1 className="text-center">Crea</h1>
+          <Link to="/" relative="path" className="go-back">
+            <FaArrowLeftLong />
+          </Link>
+          <FormFotos onSubmit={createFoto} />
+        </div>
       </section>
     </>
   );

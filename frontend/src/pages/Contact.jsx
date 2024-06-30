@@ -44,53 +44,56 @@ export default function ContactForm() {
         <Link to="/" relative="path" className="go-back">
           <FaArrowLeftLong />
         </Link>
-        <form onSubmit={handleSubmit} className="">
-          <div className="cont-info">
-            <label htmlFor="name">Nome:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="cont-info">
-            <label htmlFor="surname">Cognome:</label>
-            <input
-              type="text"
-              id="surname"
-              name="surname"
-              value={formData.surname}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="cont-info">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="cont-info">
-            <label htmlFor="content">Messaggio:</label>
-            <textarea
-              id="content"
-              name="content"
-              value={formData.content}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit">Invia</button>
-          {messageSent && <p>Messaggio inviato correttamente!</p>}
-        </form>
+        <div className="contacts-form-cont">
+          <h1>Contatti</h1>
+          <form onSubmit={handleSubmit} className="">
+            <div className="cont-info">
+              <label htmlFor="name">Nome:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="cont-info">
+              <label htmlFor="surname">Cognome:</label>
+              <input
+                type="text"
+                id="surname"
+                name="surname"
+                value={formData.surname}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="cont-info">
+              <label htmlFor="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="cont-info">
+              <label htmlFor="content">Messaggio:</label>
+              <textarea
+                id="content"
+                name="content"
+                value={formData.content}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="submit">Invia</button>
+            {messageSent && <p>Messaggio inviato correttamente!</p>}
+          </form>
+        </div>
       </section>
     </>
   );
