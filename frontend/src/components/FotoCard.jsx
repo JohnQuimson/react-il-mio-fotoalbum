@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
+import { FaArrowLeftLong } from 'react-icons/fa6';
+import { TiTick } from 'react-icons/ti';
+import { ImCross } from 'react-icons/im';
 
 export default function ({ id, title, description, img, visible, categories }) {
   return (
     <>
-      <Link to="/" relative="path">
-        Torna indietro
+      <Link to="/" relative="path" className="go-back">
+        <FaArrowLeftLong />
       </Link>
       <div className="foto-container">
         <div className={`foto ${visible ? 'visible' : ''}`}>
@@ -29,6 +32,8 @@ export default function ({ id, title, description, img, visible, categories }) {
           </div>
           <div className="card-content">
             <h3>{title}</h3>
+            <strong>Descrizione:</strong>
+            <p>{description}</p>
             {categories.length > 0 ? (
               <div className="categories">
                 <strong>categories:</strong>
@@ -41,7 +46,8 @@ export default function ({ id, title, description, img, visible, categories }) {
             ) : (
               <strong>Categorie non specificate</strong>
             )}
-            <p>{description}</p>
+            <strong>Visibilità:</strong>
+            {visible === true ? <TiTick /> : <ImCross />}
           </div>
         </div>
       </div>

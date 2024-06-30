@@ -213,3 +213,59 @@ header {
     align-self: start;
   }
 }
+
+#single-foto {
+  position: relative;
+  height: 85vh;
+  background-color: #c5d0d0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .foto-container {
+    .card-content {
+      h3 {
+        margin-top: 10px;
+        text-transform: uppercase;
+        color: #424d4d;
+      }
+    }
+  }
+
+  .edit-foto {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+
+    .edit {
+      background-color: orange;
+      color: white;
+      padding: 10px;
+      font-size: 24px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background-color: rgb(255, 199, 96);
+      }
+    }
+
+    .delete {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 24px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background-color: rgb(255, 80, 80);
+      }
+    }
+  }
+}

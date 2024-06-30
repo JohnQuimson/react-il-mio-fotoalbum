@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import FotoCard from '../components/FotoCard';
 import { useAuth } from '../contexts/AuthContext';
+import { FaEdit } from 'react-icons/fa';
+import { FaTrashCan } from 'react-icons/fa6';
 
 export default function SingleFoto() {
   const { id } = useParams();
@@ -32,32 +34,33 @@ export default function SingleFoto() {
     return <div>Caricando foto...</div>;
   }
 
-  const { isLoggedIn, logout, user } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return (
     <>
-      <div className="single-foto">
-        <FotoCard
-          id={foto.id}
-          title={foto.title}
-          description={foto.description}
-          img={foto.img}
-          visible={foto.visible}
-          categories={foto.categories.map((i) => i.name)}
-        />
+      <section id="single-foto" className="">
+        <div className="d-flex flex-column">
+          <FotoCard
+            id={foto.id}
+            title={foto.title}
+            description={foto.description}
+            img={foto.img}
+            visible={foto.visible}
+            categories={foto.categories.map((i) => i.name)}
+          />
 
-        {isLoggedIn && (
-          <div>
-            <Link to={`/fotos/${id}/edit`}>Modifica</Link>
-            <button
-              onClick={() => deleteFoto(foto.id)}
-              className="btn btn-danger"
-            >
-              Delete
-            </button>
-          </div>
-        )}
-      </div>
+          {isLoggedIn && (
+            <div className="edit-foto">
+              <Link to={`/fotos/${id}/edit`} className="edit">
+                <FaEdit />
+              </Link>
+              <button onClick={() => deleteFoto(foto.id)} className="delete">
+                <FaTrashCan />
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
     </>
   );
 }
