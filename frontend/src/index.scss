@@ -39,9 +39,38 @@ header {
       li {
         a {
           color: #718383;
+          &.active {
+            color: #013030;
+            pointer-events: none;
+          }
 
           &:hover {
             color: #013030;
+          }
+        }
+      }
+
+      .user {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        align-items: center;
+
+        span {
+          position: absolute;
+          top: -25px;
+        }
+
+        button {
+          background-color: white;
+          border: none;
+          border-radius: 20px;
+          padding: 5px 10px;
+          align-self: start;
+
+          &:hover {
+            background-color: rgb(189, 30, 30);
+            color: white;
           }
         }
       }
