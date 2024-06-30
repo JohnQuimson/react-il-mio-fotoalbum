@@ -33,32 +33,36 @@ export default function () {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Email"
-          value={formData.email}
-          onChange={(e) => changeData('email', e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={(e) => changeData('password', e.target.value)}
-        />
-        {loginError !== null && (
-          <div className="error">{loginError.message}</div>
-        )}
-        {loginError?.errors &&
-          loginError.errors.map((err, index) => (
-            <div key={`err${index}`}>{err.msg}</div>
-          ))}
-        <button>Loggati</button>
-        <NavLink to={`/signup`} className="register">
-          Non hai un account? Registrati
-        </NavLink>
-      </form>
+      <section id="login">
+        <h1>Login</h1>
+        <div className="login-form-cont">
+          <form onSubmit={handleSubmit} className="login-form">
+            <input
+              type="text"
+              placeholder="Email"
+              value={formData.email}
+              onChange={(e) => changeData('email', e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={(e) => changeData('password', e.target.value)}
+            />
+            {loginError !== null && (
+              <div className="error">{loginError.message}</div>
+            )}
+            {loginError?.errors &&
+              loginError.errors.map((err, index) => (
+                <div key={`err${index}`}>{err.msg}</div>
+              ))}
+            <button>Loggati</button>
+            <NavLink to={`/signup`} className="register">
+              Non hai un account? Registrati
+            </NavLink>
+          </form>
+        </div>
+      </section>
     </>
   );
 }
