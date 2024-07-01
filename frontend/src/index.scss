@@ -700,8 +700,13 @@ header {
 
         .hamburger-menu {
           background-color: transparent;
-          border: 2px solid white;
-          padding: 10px;
+          border: none;
+          font-size: 28px;
+          color: #ffffff;
+
+          &:hover {
+            color: #013030;
+          }
         }
 
         menu {
