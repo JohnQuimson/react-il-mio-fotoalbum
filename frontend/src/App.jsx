@@ -13,6 +13,7 @@ import CreateFoto from './pages/CreateFoto';
 import EditFoto from './pages/EditFoto';
 import AdminPage from './middlewares/AdminPage';
 import Messages from './pages/Messages';
+import Dashboard from './pages/Dashboard';
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
                   <Route path="create" element={<CreateFoto />} />
                 </Route>
                 <Route path="messages" element={<Messages />} />
+                <Route path="dashboard" element={<Dashboard />} />
               </Route>
             </Routes>
           </AuthProvider>

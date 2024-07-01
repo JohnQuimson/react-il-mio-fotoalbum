@@ -52,7 +52,9 @@ export default function () {
           )}
           {isLoggedIn && (
             <li className="user">
-              {user.name && <span>{user.name}</span>}
+              <NavLink to={`/dashboard`} className="">
+                {user.name && <span>{user.name}</span>}
+              </NavLink>
               <button onClick={logout}>Logout</button>
             </li>
           )}
