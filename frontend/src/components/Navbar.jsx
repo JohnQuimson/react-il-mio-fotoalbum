@@ -32,15 +32,7 @@ export default function () {
               </NavLink>
             </li>
           ))}
-          {isLoggedIn && (
-            <>
-              <li className="d-flex flex-column align-items-center access">
-                <NavLink to={`/messages`} className="message">
-                  Messaggi
-                </NavLink>
-              </li>
-            </>
-          )}
+
           {!isLoggedIn && (
             <>
               <li className="d-flex flex-column align-items-center access">
@@ -52,10 +44,9 @@ export default function () {
           )}
           {isLoggedIn && (
             <li className="user">
-              <NavLink to={`/dashboard`} className="">
+              <NavLink to={`/dashboard`} className="user">
                 {user.name && <span>{user.name}</span>}
               </NavLink>
-              <button onClick={logout}>Logout</button>
             </li>
           )}
         </menu>

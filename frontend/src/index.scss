@@ -65,9 +65,15 @@ header {
         position: relative;
         align-items: center;
 
-        span {
-          position: absolute;
-          top: -25px;
+        .user {
+          padding: 10px 10px;
+          background-color: white;
+          border-radius: 10px;
+          text-decoration: none;
+
+          &:hover {
+            background-color: rgb(222, 251, 255);
+          }
         }
 
         button {
@@ -603,9 +609,51 @@ header {
 }
 
 #dashboard {
+  height: 85vh;
+
+  .visible {
+    color: green;
+  }
+
+  .not-visible {
+    color: red;
+  }
+
   .sidebar {
   }
 
   .content {
+    overflow-y: scroll;
+
+    .edit {
+      background-color: orange;
+      color: white;
+      padding: 5px;
+      font-size: 18px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background-color: rgb(255, 199, 96);
+      }
+    }
+
+    .delete {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background-color: rgb(255, 80, 80);
+      }
+    }
   }
 }
