@@ -23,7 +23,7 @@ export default function SingleFoto() {
 
   const deleteFoto = async (id) => {
     await axios.delete(`/fotos/${id}`);
-    navigate('/fotos');
+    navigate('/');
   };
 
   if (fotoError) {

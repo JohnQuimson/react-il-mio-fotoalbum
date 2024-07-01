@@ -20,7 +20,7 @@ const AboutFotographer = () => {
         <div className="col-dx col-12 col-md-6">
           <div className="col-dx">
             <div className="cont-img">
-              <img src="jumbo-pic.jpg" alt="" />
+              <img src="jumbo-img.webp" alt="" />
             </div>
           </div>
         </div>
