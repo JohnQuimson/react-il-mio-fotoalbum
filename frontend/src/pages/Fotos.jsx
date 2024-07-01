@@ -66,12 +66,7 @@ export default function () {
         {/* WORK HEADER */}
         <div className="work-header d-flex justify-content-between">
           <h3 className="text-start px-4 m-0">My work</h3>
-          {/* Crea Foto */}
-          {isLoggedIn && (
-            <Link to="/fotos/create" className="crea-foto">
-              Crea Foto
-            </Link>
-          )}
+
           {/* Categ Filter */}
           <div className="categ-filter text-end px-4 m-0">
             <select onChange={(e) => handleCategoryFilter(e.target.value)}>

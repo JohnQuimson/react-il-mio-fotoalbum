@@ -14,6 +14,7 @@ import EditFoto from './pages/EditFoto';
 import AdminPage from './middlewares/AdminPage';
 import Messages from './pages/Messages';
 import Dashboard from './pages/Dashboard';
+import DashboardLayout from './layouts/DashboardLayout';
 
 const App = () => {
   return (
@@ -46,6 +47,17 @@ const App = () => {
                   <Route path="create" element={<CreateFoto />} />
                 </Route>
                 <Route path="messages" element={<Messages />} />
+              </Route>
+
+              {/*Dashboard */}
+              <Route
+                path="/"
+                element={
+                  <PrivatePage>
+                    <DashboardLayout />
+                  </PrivatePage>
+                }
+              >
                 <Route path="dashboard" element={<Dashboard />} />
               </Route>
             </Routes>
