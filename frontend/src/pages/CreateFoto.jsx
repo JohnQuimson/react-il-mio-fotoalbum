@@ -7,8 +7,6 @@ export default function () {
   const navigate = useNavigate();
 
   const createFoto = async (formData) => {
-    console.log(formData);
-    //logica per salvare la pizza nel database
     const res = await axios.post(`/fotos`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',

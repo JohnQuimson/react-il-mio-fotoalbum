@@ -23,7 +23,6 @@ export default function FormFotos({ initialData, onSubmit }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('FormData', formData);
     onSubmit(formData);
   };
 
@@ -36,8 +35,8 @@ export default function FormFotos({ initialData, onSubmit }) {
             <div key={`formElement${index}`} className="categories">
               <p className="m-0 form-title">Categorie:</p>
               <ul>
-                {categories.map(({ id, name }, index) => (
-                  <li key={`cat${index}`}>
+                {categories.map(({ id, name }) => (
+                  <li key={`cat${id}`}>
                     <label>
                       <input
                         type="checkbox"
@@ -84,10 +83,9 @@ export default function FormFotos({ initialData, onSubmit }) {
               );
             }
             return (
-              <label className="text">
+              <label key={`formElement${index}`} className="text">
                 <p className="form-title">{name}</p>
                 <input
-                  key={`formElement${index}`}
                   required
                   name={name}
                   type={typeof value === 'number' ? 'number' : 'text'}

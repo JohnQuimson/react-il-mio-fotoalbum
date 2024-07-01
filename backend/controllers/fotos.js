@@ -16,7 +16,7 @@ const store = async (req, res) => {
     title,
     description,
 
-    visible: req.body.available ? true : false,
+    visible: req.body.visible ? true : false,
     categories: {
       connect: categories,
     },

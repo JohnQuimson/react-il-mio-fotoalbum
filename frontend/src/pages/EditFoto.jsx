@@ -46,7 +46,7 @@ export default function () {
   return (
     <section id="edit-foto">
       <h1>Modifica </h1>
-      <div className="edit-form-cont border">
+      <div className="edit-form-cont">
         {dataToEdit === null ? (
           <p>Loading...</p>
         ) : (
