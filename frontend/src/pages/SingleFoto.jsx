@@ -1,10 +1,7 @@
 import axios from '../utils/axiosClient';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import FotoCard from '../components/FotoCard';
-import { useAuth } from '../contexts/AuthContext';
-import { FaEdit } from 'react-icons/fa';
-import { FaTrashCan } from 'react-icons/fa6';
 
 export default function SingleFoto() {
   const { id } = useParams();
@@ -34,8 +31,6 @@ export default function SingleFoto() {
     return <div>Caricando foto...</div>;
   }
 
-  const { isLoggedIn } = useAuth();
-
   return (
     <>
       <section id="single-foto" className="">
@@ -48,17 +43,6 @@ export default function SingleFoto() {
             visible={foto.visible}
             categories={foto.categories.map((i) => i.name)}
           />
-
-          {isLoggedIn && (
-            <div className="edit-foto">
-              <Link to={`/fotos/${id}/edit`} className="edit">
-                <FaEdit />
-              </Link>
-              <button onClick={() => deleteFoto(foto.id)} className="delete">
-                <FaTrashCan />
-              </button>
-            </div>
-          )}
         </div>
       </section>
     </>

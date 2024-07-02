@@ -94,7 +94,7 @@ export default function () {
                     src={f.img ? f.img : 'https://placehold.co/10x10'}
                     alt="img"
                     style={{ width: '100%', height: 'auto' }}
-                    className={f.visible ? 'visible' : 'invisible'}
+                    className={f.visible ? 'visible' : 'd-none'}
                   />
                 </Link>
               </li>
